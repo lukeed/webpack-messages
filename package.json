@@ -15,8 +15,10 @@
   "files": [
     "index.js"
   ],
-  "keywords": [
-  ],
+  "keywords": [],
   "dependencies": {
+    "chalk": "^2.0.1",
+    "console-clear": "^1.0.0",
+    "webpack-format-messages": "^1.0.0"
   }
 }
