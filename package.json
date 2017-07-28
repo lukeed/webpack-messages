@@ -1,0 +1,22 @@
+{
+  "name": "webpack-messages",
+  "version": "0.0.0",
+  "description": "WIP",
+  "repository": "lukeed/webpack-messages",
+  "license": "MIT",
+  "author": {
+    "name": "Luke Edwards",
+    "email": "luke.edwards05@gmail.com",
+    "url": "lukeed.com"
+  },
+  "engines": {
+    "node": ">=4"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+  ],
+  "dependencies": {
+  }
+}
