@@ -57,13 +57,11 @@ module.exports = {
 
 ### WebpackMessages(options)
 
-Extracts & prettifies warning and error messages from Webpack.
-
 #### options.name
 
 Type: `String`
 
-Optionally provide a name your bundle. Strongly recommended when compiling multiple bundles!
+Optionally provide a name for your bundle. Strongly recommended when compiling multiple bundles!
 
 #### options.logger
 
