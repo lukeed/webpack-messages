@@ -1,7 +1,7 @@
 {
   "name": "webpack-messages",
   "version": "0.0.0",
-  "description": "WIP",
+  "description": "Beautifully format Webpack messages throughout your bundle lifecycle(s)!",
   "repository": "lukeed/webpack-messages",
   "license": "MIT",
   "author": {
@@ -15,7 +15,19 @@
   "files": [
     "index.js"
   ],
-  "keywords": [],
+  "keywords": [
+    "bundle",
+    "webpack",
+    "create-react-app",
+    "webpack-plugin",
+    "formatting",
+    "messages",
+    "console",
+    "pretty",
+    "format",
+    "output",
+    "stats"
+  ],
   "dependencies": {
     "chalk": "^2.0.1",
     "console-clear": "^1.0.0",
