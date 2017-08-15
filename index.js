@@ -22,7 +22,7 @@ class WebpackMessages {
 		const name = this.name ? ` ${chalk.cyan(this.name)} bundle` : '';
 		const onStart = _ => this.logger(`Building${name}...`);
 
-		compiler.plugin('compilation', onStart);
+		compiler.plugin('compile', onStart);
 		compiler.plugin('invalid', _ => clear() && onStart());
 
 		compiler.plugin('done', stats => {
