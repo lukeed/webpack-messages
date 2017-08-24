@@ -80,6 +80,11 @@ Run a custom function once a bundle has been compiled successfully. If provided,
 
 Function receives a formatted `name` string (or `''`) and the Webpack [`stats`](https://github.com/webpack/docs/wiki/node.js-api#stats) object.
 
+#### options.noClear
+
+Type: `Boolean`
+
+Set to true to avoid clearing the terminal.
 
 ## License
 

@@ -11,11 +11,13 @@ class WebpackMessages {
 		this.name = opts.name;
 		this.onDone = opts.onComplete;
 		this.logger = opts.logger || log;
+		this.noClear = opts.noClear;
 	}
 
 	printError(str, arr) {
 		arr && (str += '\n\n' + arr.join(''));
-		clear() && this.logger(str);
+		if (!this.noClear) clear();
+		this.logger(str);
 	}
 
 	apply(compiler) {
@@ -23,7 +25,10 @@ class WebpackMessages {
 		const onStart = _ => this.logger(`Building${name}...`);
 
 		compiler.plugin('compile', onStart);
-		compiler.plugin('invalid', _ => clear() && onStart());
+		compiler.plugin('invalid', _ => {
+			if (!this.noClear) clear();
+			onStart()
+		});
 
 		compiler.plugin('done', stats => {
 			const messages = format(stats);
