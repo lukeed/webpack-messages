@@ -1,4 +1,4 @@
-const chalk = require('chalk');
+const colors = require('ansi-colors');
 const cClear = require('console-clear');
 const format = require('webpack-format-messages');
 
@@ -19,7 +19,7 @@ class WebpackMessages {
 	}
 
 	apply(compiler) {
-		const name = this.name ? ` ${chalk.cyan(this.name)} bundle` : '';
+		const name = this.name ? ` ${colors.cyan(this.name)} bundle` : '';
 		const onStart = _ => this.logger(`Building${name}...`);
 
 		compiler.plugin('compile', onStart);
@@ -29,18 +29,18 @@ class WebpackMessages {
 			const messages = format(stats);
 
 			if (messages.errors.length) {
-				return this.printError( chalk.red(`Failed to compile${name}!`), messages.errors );
+				return this.printError( colors.red(`Failed to compile${name}!`), messages.errors );
 			}
 
 			if (messages.warnings.length) {
-				return this.printError( chalk.yellow(`Compiled${name} with warnings.`), messages.warnings );
+				return this.printError( colors.yellow(`Compiled${name} with warnings.`), messages.warnings );
 			}
 
 			if (this.onDone !== undefined) {
 				this.onDone(name, stats);
 			} else {
 				const sec = (stats.endTime - stats.startTime) / 1e3;
-				this.logger( chalk.green(`Completed${name} in ${sec}s!`) );
+				this.logger( colors.green(`Completed${name} in ${sec}s!`) );
 			}
 		});
 	}
