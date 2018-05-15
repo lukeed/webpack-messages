@@ -1,6 +1,6 @@
 {
   "name": "webpack-messages",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Beautifully format Webpack messages throughout your bundle lifecycle(s)!",
   "repository": "lukeed/webpack-messages",
   "license": "MIT",
