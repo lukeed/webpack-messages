@@ -29,8 +29,8 @@
     "stats"
   ],
   "dependencies": {
-    "ansi-colors": "^2.0.1",
     "console-clear": "^1.0.0",
+    "kleur": "^2.0.1",
     "webpack-format-messages": "^2.0.0"
   }
 }

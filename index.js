@@ -1,4 +1,4 @@
-const colors = require('ansi-colors');
+const colors = require('kleur');
 const cClear = require('console-clear');
 const format = require('webpack-format-messages');
 
