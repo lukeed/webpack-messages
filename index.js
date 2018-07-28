@@ -22,10 +22,10 @@ class WebpackMessages {
 		const name = this.name ? ` ${colors.cyan(this.name)} bundle` : '';
 		const onStart = _ => this.logger(`Building${name}...`);
 
-		compiler.plugin('compile', onStart);
-		compiler.plugin('invalid', _ => clear() && onStart());
+		compiler.hooks.compilation.tap('webpack-messages', onStart);
+		compiler.hooks.invalid.tap('webpack-messages', _ => clear() && onStart());
 
-		compiler.plugin('done', stats => {
+		compiler.hooks.done.tap('webpack-messages', stats => {
 			const messages = format(stats);
 
 			if (messages.errors.length) {
