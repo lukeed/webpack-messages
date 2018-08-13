@@ -2,6 +2,7 @@ const colors = require('kleur');
 const cClear = require('console-clear');
 const format = require('webpack-format-messages');
 
+const NAME = 'webpack-messages';
 const log = str => console.log(str);
 const clear = _ => (cClear(),true);
 
@@ -22,10 +23,7 @@ class WebpackMessages {
 		const name = this.name ? ` ${colors.cyan(this.name)} bundle` : '';
 		const onStart = _ => this.logger(`Building${name}...`);
 
-		compiler.plugin('compile', onStart);
-		compiler.plugin('invalid', _ => clear() && onStart());
-
-		compiler.plugin('done', stats => {
+		const onComplete = stats => {
 			const messages = format(stats);
 
 			if (messages.errors.length) {
@@ -42,7 +40,17 @@ class WebpackMessages {
 				const sec = (stats.endTime - stats.startTime) / 1e3;
 				this.logger( colors.green(`Completed${name} in ${sec}s!`) );
 			}
-		});
+		};
+
+		if (compiler.hooks !== void 0) {
+			compiler.hooks.compilation.tap(NAME, onStart);
+			compiler.hooks.invalid.tap(NAME, _ => clear() && onStart());
+			compiler.hooks.done.tap(NAME, onComplete);
+		} else {
+			compiler.plugin('compile', onStart);
+			compiler.plugin('invalid', _ => clear() && onStart());
+			compiler.plugin('done', onComplete);
+		}
 	}
 }
 
