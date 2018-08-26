@@ -43,7 +43,7 @@ class WebpackMessages {
 		};
 
 		if (compiler.hooks !== void 0) {
-			compiler.hooks.compilation.tap(NAME, onStart);
+			compiler.hooks.compile.tap(NAME, onStart);
 			compiler.hooks.invalid.tap(NAME, _ => clear() && onStart());
 			compiler.hooks.done.tap(NAME, onComplete);
 		} else {
