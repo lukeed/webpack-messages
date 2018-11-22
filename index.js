@@ -4,7 +4,7 @@ const format = require('webpack-format-messages');
 
 const NAME = 'webpack-messages';
 const log = str => console.log(str);
-const clear = _ => (cClear(),true);
+const clear = _ => (cClear(true),true);
 
 class WebpackMessages {
 	constructor(opts) {
