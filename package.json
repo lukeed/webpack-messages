@@ -28,6 +28,9 @@
     "output",
     "stats"
   ],
+  "scripts": {
+    "types": "npx -p typescript tsc index.js --declaration --allowJs --emitDeclarationOnly --outDir ."
+  },
   "dependencies": {
     "console-clear": "^1.0.0",
     "kleur": "^3.0.0",
