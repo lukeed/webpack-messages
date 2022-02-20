@@ -9,7 +9,9 @@ const log = str => console.log(str);
 const clear = _ => (cClear(true),true);
 
 /** @typedef {{name?: string; onComplete?: (...args: unknown[]) => void; logger?: (msg: string) => void; }} Options*/
+/** @typedef {import('webpack').WebpackPluginInstance} WebpackPluginInstance */
 
+/** @implements {WebpackPluginInstance} */
 class WebpackMessages {
 
 	/** @param {Options} [opts] */
