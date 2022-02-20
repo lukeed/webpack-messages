@@ -3,10 +3,16 @@ const cClear = require('console-clear');
 const format = require('webpack-format-messages');
 
 const NAME = 'webpack-messages';
+/** @param {string} str */
 const log = str => console.log(str);
+/** @param {string} [_] */
 const clear = _ => (cClear(true),true);
 
+/** @typedef {{name?: string; onComplete?: (...args: unknown[]) => void; logger?: (msg: string) => void; }} Options*/
+
 class WebpackMessages {
+
+	/** @param {Options} [opts] */
 	constructor(opts) {
 		opts = opts || {};
 		this.name = opts.name;
@@ -14,11 +20,13 @@ class WebpackMessages {
 		this.logger = opts.logger || log;
 	}
 
+	/** @type {(str: string, arr?: string[]) => void} */
 	printError(str, arr) {
 		arr && (str += '\n\n' + arr.join(''));
 		clear() && this.logger(str);
 	}
 
+	/** @param {import('webpack').Compiler} compiler */
 	apply(compiler) {
 		const name = this.name ? ` ${colors.cyan(this.name)} bundle` : '';
 		const onStart = _ => this.logger(`Building${name}...`);
